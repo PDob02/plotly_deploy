@@ -60,15 +60,21 @@ function buildCharts(sample) {
     // 3. Create a variable that holds the samples array. 
     var samplesArray = []
     // 4. Create a variable that filters the samples for the object with the desired sample number.
-    let desiredSamples = samplesArray.filter(samplesArray => "id")
-    console.log(desiredSamples)
+    var samples = data.samples;    
+    var resultArray = samples.filter(sampleObj => sampleObj.id == sample);
+    var result = resultArray[0];
+    var otu_ids = result.otu_ids;
+    var otu_labels = result.otu_labels;
+    var sample_values = result.sample_values;
+    // let desiredSamples = sample.filter(sampleObj => sampleObj.id == sample);
+    // console.log(desiredSamples)
     //  5. Create a variable that holds the first sample in the array.
-    var firstSample = desiredSamples[0];
+    // var firstSample = sample_values[0];
 
     // 6. Create variables that hold the otu_ids, otu_labels, and sample_values.
-    var otu_ids = metadata.filter(desiredSamples => sample.id)
-    var otu_labels = metadata.filter(samplesArray => sample.names)
-    var sample_values = metadata.filter(samplesArray => sample.wfreq)
+    // var otu_ids = metadata.filter(desiredSamples => sample.id)
+    // var otu_labels = metadata.filter(samplesArray => sample.names)
+    // var sample_values = metadata.filter(samplesArray => sample.wfreq)
     
     var trace = {
       otu_ids: [],
@@ -84,15 +90,14 @@ function buildCharts(sample) {
     var yticks = data.list.map.reverse().slice()(x => x.dt_text)
 
     // 8. Create the trace for the bar chart. 
-    var barData = [
+    var barData = {
       type: "bar",
       mode: "lines",
       x: sample_values,
       y: otu_labels,
       line: {
         color: "#17BECF"
-      }
-    ];
+    }};
 
     var barData = [trace1]
     // 9. Create the layout for the bar chart. 
