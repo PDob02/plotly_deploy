@@ -95,10 +95,17 @@ function buildCharts(sample) {
     // 9. Create the layout for the bar chart. 
     var barLayout = {
       title: "Samples Data",
-      xaxis: {title: "Food Option"}
-      yaxis: {title: "Number of Respondents"}
+      margin: {
+        l: 100,
+        r: 100,
+        t: 100,
+        b: 100
+      }
     };
     // 10. Use Plotly to plot the data with the layout. 
-    Plotly.newPlot("plotArea", trace, layout)
+    Plotly.newPlot("plot", data, layout)
   });
 }
+
+// Add event listener for submit button
+d3.select("#submit").on("click", handleSubmit);
