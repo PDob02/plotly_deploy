@@ -60,15 +60,15 @@ function buildCharts(sample) {
     // 3. Create a variable that holds the samples array. 
     var samplesArray = []
     // 4. Create a variable that filters the samples for the object with the desired sample number.
-    let desiredSamples = samplesArray.filter(desiredSamples => id)
+    let desiredSamples = samplesArray.filter(samplesArray => "id")
     console.log(desiredSamples)
     //  5. Create a variable that holds the first sample in the array.
-    var resultSample = desiredSamples[0];
+    var firstSample = desiredSamples[0];
 
     // 6. Create variables that hold the otu_ids, otu_labels, and sample_values.
-    var otu_ids = names.filter()
-    var otu_labels
-    var sample_values
+    var otu_ids = metadata.filter(desiredSamples => sample.id)
+    var otu_labels = metadata.filter(samplesArray => sample.names)
+    var sample_values = metadata.filter(samplesArray => sample.wfreq)
     
     var trace = {
       otu_ids: [],
