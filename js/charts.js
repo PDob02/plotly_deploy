@@ -66,10 +66,14 @@ function buildCharts(sample) {
     var resultSample = desiredSamples[0];
 
     // 6. Create variables that hold the otu_ids, otu_labels, and sample_values.
+    var otu_ids = names.filter()
+    var otu_labels
+    var sample_values
+    
     var trace = {
-      otu_ids: []
-      otu_labels: []
-      sample_values: []
+      otu_ids: [],
+      otu_labels: [],
+      sample_values: [],
       type: "bar"
     };
 
@@ -80,12 +84,11 @@ function buildCharts(sample) {
     var yticks = data.list.map.reverse().slice()(x => x.dt_text)
 
     // 8. Create the trace for the bar chart. 
-    var barData = [trace1]
+    var barData = [
       type: "bar",
       mode: "lines",
       x: sample_values,
       y: otu_labels,
-      z: otu_ids,
       line: {
         color: "#17BECF"
       }
