@@ -60,7 +60,7 @@ function buildCharts(sample) {
     // 3. Create a variable that holds the samples array. 
     var samplesArray = []
     // 4. Create a variable that filters the samples for the object with the desired sample number.
-    let desiredSamples = samplesArray.filter(desiredSamples => number)
+    let desiredSamples = samplesArray.filter(desiredSamples => id)
     console.log(desiredSamples)
     //  5. Create a variable that holds the first sample in the array.
     var resultSample = desiredSamples[0];
@@ -77,15 +77,15 @@ function buildCharts(sample) {
     // Hint: Get the the top 10 otu_ids and map them in descending order  
     //  so the otu_ids with the most bacteria are last. 
 
-    var yticks = data.list.map(x => x.dt_text)
+    var yticks = data.list.map.reverse().slice()(x => x.dt_text)
 
     // 8. Create the trace for the bar chart. 
     var barData = [trace1]
       type: "bar",
       mode: "lines",
-      x: otu_ids,
+      x: sample_values,
       y: otu_labels,
-      z: sample_values,
+      z: otu_ids,
       line: {
         color: "#17BECF"
       }
@@ -103,9 +103,9 @@ function buildCharts(sample) {
       }
     };
     // 10. Use Plotly to plot the data with the layout. 
-    Plotly.newPlot("plot", data, layout)
   });
 }
+Plotly.newPlot("plot", data, layout)
 
-// Add event listener for submit button
-d3.select("#submit").on("click", handleSubmit);
+// // Add event listener for submit button
+// d3.select("#submit").on("click", handleSubmit);
