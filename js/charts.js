@@ -162,21 +162,25 @@ function buildCharts(sample) {
     // 1. Create the trace for the bubble chart.
     var bubbleData = [
       {
-        y: yticks,
-        x: sample_values.slice(0, 10).reverse(),
-        text: otu_labels.slice(0, 10).reverse(),
+        // y: yticks,
+        y: sample_values,
+        // x: sample_values.slice(0, 10).reverse(),
+        x: otu_ids,
+        // text: otu_labels.slice(0, 10).reverse(),
+        text: otu_labels,
         // text: ['A<br>size: 40', 'B<br>size: 60', 'C<br>size: 80', 'D<br>size: 100'],
         mode: 'markers',
         marker: {
-          color: ['rgb(94, 170, 216)', 'rgb(93, 164, 214)', 'rgb(93, 164, 214)', 'rgb(255, 144, 14)',  'rgb(44, 160, 101)', 'rgb(255, 65, 54)'],
-          size: [5,10, 15, 20, 40, 60, 80, 100, 120]
+          color: otu_ids,
+          size: sample_values,
       }
     }]
     ;
 
     // 2. Create the layout for the bubble chart.
     var bubbleLayout = {
-      title: "Marker Size",
+      title: "Bacteria Cultures for Sample",
+      xaxis: {title: "OTU ID"},
       showlegend: false,
       hovermode: "closest",
       height: 500,
