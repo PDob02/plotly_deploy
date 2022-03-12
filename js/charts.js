@@ -260,21 +260,21 @@ function buildCharts(sample) {
         {
           type: "indicator",
           mode: "gauge+number+delta",
-          value: 10,
+          value: 2,
           title: { text: "Belly Button Washing Frequency", font: { size: 24 } },
-          delta: { reference: 2, increasing: { color: "RebeccaPurple" } },
+          // delta: { reference: 2, increasing: { color: "RebeccaPurple" } },
           gauge: {
-            axis: { range: [null, 10], tickwidth: 1, tickcolor: "darkblue" },
+            axis: { range: [0, 10], tickwidth: 1, tickcolor: "darkblue" },
             bar: { color: "black" },
             bgcolor: "white",
             borderwidth: 2,
             bordercolor: "gray",
             steps: [
-              { range: [0, 2], color: "cyan" },
-              { range: [2, 4], color: "blue" },
-              { range: [4, 6], color: "royalblue" },
-              { range: [6, 8], color: "green"},
-              { range: [8, 10], color: "pink"},
+              { range: [0, 2], color: "red" },
+              { range: [2, 4], color: "orange" },
+              { range: [4, 6], color: "yellow" },
+              { range: [6, 8], color: "lime"},
+              { range: [8, 10], color: "green"},
             ],
             threshold: {
               line: { color: "red", width: 4 },
@@ -325,50 +325,50 @@ function buildCharts(sample) {
     // parseFloat(data.metadata.wfreq)
     // Create the yticks for the bar chart.
 
-    // Use Plotly to plot the bar data and layout.
-    Plotly.newPlot("bar", barData, barLayout);
+    // // Use Plotly to plot the bar data and layout.
+    // Plotly.newPlot("bar", barData, barLayout);
     
-    // Use Plotly to plot the bubble data and layout.
-    Plotly.newPlot('bubble', bubbleData, bubbleLayout);
+    // // Use Plotly to plot the bubble data and layout.
+    // Plotly.newPlot('bubble', bubbleData, bubbleLayout);
    
     
-    // 4. Create the trace for the gauge chart.
-    var gaugeData = [
-      {
-        type: "indicator",
-        mode: "gauge+number+delta",
-        value: 10,
-        title: { text: "Belly Button Washing Frequency", font: { size: 24 } },
-        delta: { reference: 2, increasing: { color: "RebeccaPurple" } },
-        gauge: {
-          axis: { range: [null, 10], tickwidth: 1, tickcolor: "darkblue" },
-          bar: { color: "black" },
-          bgcolor: "white",
-          borderwidth: 2,
-          bordercolor: "gray",
-          steps: [
-            { range: [0, 2], color: "cyan" },
-            { range: [2, 4], color: "blue" },
-            { range: [4, 6], color: "royalblue" },
-            { range: [6, 8], color: "green"},
-            { range: [8, 10], color: "pink"},
-          ],
-          threshold: {
-            line: { color: "red", width: 4 },
-            thickness: 0.75,
-            value: 490
-          }
-      }
-    }
-    ];
+    // // 4. Create the trace for the gauge chart.
+    // var gaugeData = [
+    //   {
+    //     type: "indicator",
+    //     mode: "gauge+number+delta",
+    //     value: 10,
+    //     title: { text: "Belly Button Washing Frequency", font: { size: 24 } },
+    //     delta: { reference: 2, increasing: { color: "RebeccaPurple" } },
+    //     gauge: {
+    //       axis: { range: [null, 10], tickwidth: 1, tickcolor: "darkblue" },
+    //       bar: { color: "black" },
+    //       bgcolor: "white",
+    //       borderwidth: 2,
+    //       bordercolor: "gray",
+    //       steps: [
+    //         { range: [0, 2], color: "red" },
+    //         { range: [2, 4], color: "orange" },
+    //         { range: [4, 6], color: "yellow" },
+    //         { range: [6, 8], color: "lime"},
+    //         { range: [8, 10], color: "green"},
+    //       ],
+    //       threshold: {
+    //         line: { color: "red", width: 4 },
+    //         thickness: 0.75,
+    //         value: 490
+    //       }
+    //   }
+    // }
+    // ];
     
-    // 5. Create the layout for the gauge chart.
-    var gaugeLayout = { 
-      width: 500,
-      height: 400,
-      margin: { t: 25, r: 25, l: 25, b: 25 },
-      paper_bgcolor: "lavender",
-      font: { color: "darkblue", family: "Arial" }};
+    // // 5. Create the layout for the gauge chart.
+    // var gaugeLayout = { 
+    //   width: 500,
+    //   height: 400,
+    //   margin: { t: 25, r: 25, l: 25, b: 25 },
+    //   paper_bgcolor: "lavender",
+    //   font: { color: "darkblue", family: "Arial" }};
 
-    // 6. Use Plotly to plot the gauge data and layout.
-    Plotly.newPlot("gauge", gaugeData , gaugeLayout);
+    // // 6. Use Plotly to plot the gauge data and layout.
+    // Plotly.newPlot("gauge", gaugeData , gaugeLayout);
