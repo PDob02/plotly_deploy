@@ -76,18 +76,18 @@ function buildCharts(sample) {
     // var otu_labels = metadata.filter(samplesArray => sample.names)
     // var sample_values = metadata.filter(samplesArray => sample.wfreq)
     
-    var trace = {
-      otu_ids: [],
-      otu_labels: [],
-      sample_values: [],
-      type: "bar"
-    };
+    // var trace = {
+    //   otu_ids: [],
+    //   otu_labels: [],
+    //   sample_values: [],
+    //   type: "bar"
+    // };
 
     // 7. Create the yticks for the bar chart.
     // Hint: Get the the top 10 otu_ids and map them in descending order  
     //  so the otu_ids with the most bacteria are last. 
 
-    var yticks = data.list.map.reverse().slice()(x => x.dt_text)
+    // var yticks = data.list.map.reverse().slice()(x => x.otu_ids)
 
     // 8. Create the trace for the bar chart. 
     var barData = {
@@ -99,7 +99,7 @@ function buildCharts(sample) {
         color: "#17BECF"
     }};
 
-    var barData = [trace1]
+    // var barData = [trace1]
     // 9. Create the layout for the bar chart. 
     var barLayout = {
       title: "Samples Data",
@@ -113,7 +113,7 @@ function buildCharts(sample) {
     // 10. Use Plotly to plot the data with the layout. 
   });
 }
-Plotly.newPlot("plot", data, layout)
+Plotly.newPlot(sample-metadata, data, layout)
 
 // // Add event listener for submit button
 // d3.select("#submit").on("click", handleSubmit);
