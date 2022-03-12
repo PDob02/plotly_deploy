@@ -126,24 +126,65 @@ function buildCharts(sample) {
   // Use d3.json to load and retrieve the samples.json file 
   d3.json("samples.json").then((data) => {
     
-
+    // var yticks = otu_ids.slice(0, 10).map(otuID => `OTU ${otuID}`).reverse();
     // Deliverable 1 Step 10. Use Plotly to plot the data with the layout. 
-    Plotly.newPlot(); 
+    Plotly.newPlot('bubble', bubbleData, bubbleLayout); 
+    var samples = data.samples;
+    // 4. Create a variable that filters the samples for the object with the desired sample number.
+    var resultArray = samples.filter(sampleObj => sampleObj.id == sample);
 
+    // let desiredSamples = sample.filter(sampleObj => sampleObj.id == sample);
+    // console.log(desiredSamples)
+    //  5. Create a variable that holds the first sample in the array.
+    // var firstSample = sample_values[0];
+    var result = resultArray[0];
+
+    // 6. Create variables that hold the otu_ids, otu_labels, and sample_values.
+    // var otu_ids = metadata.filter(desiredSamples => sample.id)
+    // var otu_labels = metadata.filter(samplesArray => sample.names)
+    // var sample_values = metadata.filter(samplesArray => sample.wfreq)
+    var otu_ids = result.otu_ids;
+    var otu_labels = result.otu_labels;
+    var sample_values = result.sample_values;
+    // var trace = {
+    //   otu_ids: [],
+    //   otu_labels: [],
+    //   sample_values: [],
+    //   type: "bar"
+    // };
+
+    // 7. Create the yticks for the bar chart.
+    // Hint: Get the the top 10 otu_ids and map them in descending order  
+    //  so the otu_ids with the most bacteria are last. 
+    console.log(sample_values)
+    // var yticks = sample_values.list.map.reverse().slice(0,10)
+    var yticks = otu_ids.slice(0, 10).map(otuID => `OTU ${otuID}`).reverse();
     // 1. Create the trace for the bubble chart.
-    var bubbleData = [trace1
-   
-    ];
+    var bubbleData = [
+      {
+        y: yticks,
+        x: sample_values.slice(0, 10).reverse(),
+        text: otu_labels.slice(0, 10).reverse(),
+        // text: ['A<br>size: 40', 'B<br>size: 60', 'C<br>size: 80', 'D<br>size: 100'],
+        mode: 'markers',
+        marker: {
+          color: ['rgb(94, 170, 216)', 'rgb(93, 164, 214)', 'rgb(93, 164, 214)', 'rgb(255, 144, 14)',  'rgb(44, 160, 101)', 'rgb(255, 65, 54)'],
+          size: [5,10, 15, 20, 40, 60, 80, 100, 120]
+      }
+    }]
+    ;
 
     // 2. Create the layout for the bubble chart.
     var bubbleLayout = {
-      title: "Marker Size"
+      title: "Marker Size",
       showlegend: false,
-      height: 600,
-      width: 600
+      hovermode: "closest",
+      height: 500,
+      width: 2000,
     };
 
     // 3. Use Plotly to plot the data with the layout.
-    Plotly.newPlot('myDiv', bubbleData, bubbleLayout); 
+    Plotly.newPlot('bubble', bubbleData, bubbleLayout); 
   });
 }
+
