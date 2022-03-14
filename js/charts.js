@@ -228,6 +228,11 @@ function buildCharts(sample) {
       Plotly.newPlot("bar", barData, barLayout);
       Plotly.newPlot('bubble', bubbleData, bubbleLayout); 
       var samples = data.samples;
+      console.log({samples})
+      var metaData = data.metadata
+      console.log({metaData})
+      var resultMetadata = metaData.filter(sampleObj => sampleObj.id == sample);
+      var resultMetadata = resultMetadata[0];
       var resultArray = samples.filter(sampleObj => sampleObj.id == sample);
       var result = resultArray[0];
       var otu_ids = result.otu_ids;
@@ -256,11 +261,12 @@ function buildCharts(sample) {
         width: 2000,
       };
       Plotly.newPlot('bubble', bubbleData, bubbleLayout);
+      console.log({result})
       var gaugeData = [
         {
           type: "indicator",
           mode: "gauge+number+delta",
-          value: 2,
+          value: resultMetadata.wfreq,
           title: { text: "Belly Button Washing Frequency", font: { size: 24 } },
           // delta: { reference: 2, increasing: { color: "RebeccaPurple" } },
           gauge: {
